@@ -1,0 +1,13 @@
+--- name:simulator
+scanner_in_body:
+  position:
+    data:
+      - 0.0
+      - 0.0
+      - -0.101305
+  orientation:
+      im:
+        - 1.0
+        - 0.0
+        - 0.0
+      re: 0.0
