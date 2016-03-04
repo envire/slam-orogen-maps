@@ -5,9 +5,8 @@
 
 #include "envire_maps/PointCloudAggregatorBase.hpp"
 #include <boost/scoped_ptr.hpp>
-//#include <vizkit3d/QtThreadedWidget.hpp>
-//#include "viz/MLSGridVisualization.hpp"
 #include <envire_maps/MLSGrid.hpp>
+#include <vizkit3d/StandaloneVisualizer.hpp>
 
 
 namespace envire_maps {
@@ -40,7 +39,7 @@ tasks/Task.cpp, and will be put in the envire_maps namespace.
 
         base::samples::RigidBodyState lastPose;
         boost::scoped_ptr<envire::maps::MLSGrid> mls;
-//        QtThreadedWidget<vizkit3d::Vizkit3DWidget> app;
+        envire::maps::StandaloneVisualizer viz;
 
     public:
         /** TaskContext constructor for PointCloudAggregator

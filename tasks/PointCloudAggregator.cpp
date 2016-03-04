@@ -49,7 +49,8 @@ void PointCloudAggregator::pointCloudCallback(const base::Time &ts, const ::base
         pc[i].getVector3fMap() = points[i].cast<float>();
     }
     _pointCloud_in_world.write(out);
-    mls->mergePointCloud(pc, lastPose.getTransform());
+    mls->mergePointCloud(pc, scanner2World);
+    viz.updateData(*mls);
 
 
 }
@@ -64,15 +65,15 @@ bool PointCloudAggregator::configureHook()
         return false;
     using namespace envire::maps;
     // TODO get values from config
-    Eigen::Vector2d res(0.25, 0.25);
-    Vector2ui numCells(150, 150);
+    Eigen::Vector2d res(1, 1);
+    Vector2ui numCells(50, 50);
 
     MLSConfig mls_config;
     mls_config.updateModel = MLSConfig::SLOPE;
-    mls_config.gapSize = 0.125f;
+    mls_config.gapSize = 0.25f;
     mls_config.useNegativeInformation = !true;
     mls.reset(new MLSGrid(numCells, res, mls_config));
-    mls->getOffset().translation() << -0.5*mls->getSize(), 0;
+    mls->getGrid().getLocalFrame().translation() << 0.5*mls->getGrid().getSize()+Eigen::Vector2d(0.5,0.5), 0;
 
 
     return true;

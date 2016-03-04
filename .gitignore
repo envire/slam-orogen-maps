@@ -3,6 +3,7 @@ templates/*
 *~
 .*.swp
 build/*
+scripts/logs/*
 
 *autobuild-stamp
 
