@@ -13,5 +13,6 @@
   <depend package="qt4" />
   <depend package="qt4-opengl" />
   <depend package="slam/pcl" />
+  <depend package="drivers/orogen/aggregator" />
   
 </package>
