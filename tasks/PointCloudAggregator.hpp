@@ -1,15 +1,15 @@
 /* Generated from orogen/lib/orogen/templates/tasks/Task.hpp */
 
-#ifndef ENVIRE_MAPS_POINTCLOUDAGGREGATOR_TASK_HPP
-#define ENVIRE_MAPS_POINTCLOUDAGGREGATOR_TASK_HPP
+#ifndef MAPS_POINTCLOUDAGGREGATOR_TASK_HPP
+#define MAPS_POINTCLOUDAGGREGATOR_TASK_HPP
 
-#include "envire_maps/PointCloudAggregatorBase.hpp"
+#include "maps/PointCloudAggregatorBase.hpp"
 #include <boost/scoped_ptr.hpp>
-#include <envire_maps/MLSGrid.hpp>
+#include <maps/grid/MLSMap.hpp>
 #include <vizkit3d/StandaloneVisualizer.hpp>
 
 
-namespace envire_maps {
+namespace maps {
 
     /*! \class PointCloudAggregator 
      * \brief The task context provides and requires services. It uses an ExecutionEngine to perform its functions.
@@ -18,12 +18,12 @@ namespace envire_maps {
      * Declare a new task context (i.e., a component)
 
 The corresponding C++ class can be edited in tasks/Task.hpp and
-tasks/Task.cpp, and will be put in the envire_maps namespace.
+tasks/Task.cpp, and will be put in the maps namespace.
      * \details
      * The name of a TaskContext is primarily defined via:
      \verbatim
      deployment 'deployment_name'
-         task('custom_task_name','envire_maps::PointCloudAggregator')
+         task('custom_task_name','maps::PointCloudAggregator')
      end
      \endverbatim
      *  It can be dynamically adapted when the deployment is called with a prefix argument. 
@@ -38,15 +38,15 @@ tasks/Task.cpp, and will be put in the envire_maps namespace.
         virtual void pointCloudCallback(const base::Time &ts, const ::base::samples::Pointcloud &pointCloud_sample);
 
         base::samples::RigidBodyState lastPose;
-        boost::scoped_ptr<envire::maps::MLSGrid> mls;
-        envire::maps::StandaloneVisualizer viz;
+        boost::scoped_ptr<::maps::MLSMap> mls;
+        ::maps::StandaloneVisualizer viz;
 
     public:
         /** TaskContext constructor for PointCloudAggregator
          * \param name Name of the task. This name needs to be unique to make it identifiable via nameservices.
          * \param initial_state The initial TaskState of the TaskContext. Default is Stopped state.
          */
-        PointCloudAggregator(std::string const& name = "envire_maps::PointCloudAggregator");
+        PointCloudAggregator(std::string const& name = "maps::PointCloudAggregator");
 
         /** TaskContext constructor for PointCloudAggregator 
          * \param name Name of the task. This name needs to be unique to make it identifiable for nameservices. 

@@ -1,5 +1,5 @@
-#ifndef envire_maps_TYPES_HPP
-#define envire_maps_TYPES_HPP
+#ifndef maps_TYPES_HPP
+#define maps_TYPES_HPP
 
 /* If you need to define types specific to your oroGen components, define them
  * here. Required headers must be included explicitly
@@ -12,7 +12,6 @@
 #include "base/Eigen.hpp"
 #include "base/samples/RigidBodyState.hpp"
 
-namespace envire {
 namespace maps {
 
 struct PointCloudAggregatorConfig {
@@ -24,7 +23,6 @@ struct PointCloudAggregatorConfig {
 
 
 }  // namespace maps
-}  // namespace envire
 
 #endif
 

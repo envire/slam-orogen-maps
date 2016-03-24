@@ -3,11 +3,11 @@
 #include "PointCloudAggregator.hpp"
 
 //#include <vizkit3d/Vizkit3DWidget.hpp>
-//#include "MLSGridVisualization.hpp"
+//#include "MLSMapVisualization.hpp"
 //#include <vizkit3d/GridVisualization.hpp>
 
 
-using namespace envire_maps;
+using namespace maps;
 
 PointCloudAggregator::PointCloudAggregator(std::string const& name)
     : PointCloudAggregatorBase(name)
@@ -40,7 +40,7 @@ void PointCloudAggregator::pointCloudCallback(const base::Time &ts, const ::base
     base::Pose body2World = lastPose.getPose();
     Eigen::Affine3d scanner2World = body2World.toTransform() * _scanner_in_body.rvalue().getPose().toTransform();
     base::samples::Pointcloud out;
-    envire::maps::PointCloud pc;
+    ::maps::PointCloud pc;
     pc.resize(N);
     out.points.reserve(N);
     for(size_t i=0; i<N; ++i)
@@ -63,7 +63,7 @@ bool PointCloudAggregator::configureHook()
 {
     if (! PointCloudAggregatorBase::configureHook())
         return false;
-    using namespace envire::maps;
+    using namespace ::maps;
     // TODO get values from config
     Eigen::Vector2d res(1, 1);
     Vector2ui numCells(50, 50);
@@ -72,7 +72,7 @@ bool PointCloudAggregator::configureHook()
     mls_config.updateModel = MLSConfig::SLOPE;
     mls_config.gapSize = 0.25f;
     mls_config.useNegativeInformation = !true;
-    mls.reset(new MLSGrid(numCells, res, mls_config));
+    mls.reset(new MLSMap(numCells, res, mls_config));
     mls->getLocalFrame().translation() << 0.5*mls->getSize()+Eigen::Vector2d(0.5,0.5), 0;
 
 
@@ -86,8 +86,8 @@ bool PointCloudAggregator::startHook()
 
 //    app.start();
 //
-//    //create vizkit3d plugin for showing envire
-//    vizkit3d::MLSGridVisualization *mls_viz = new vizkit3d::MLSGridVisualization();
+//    //create vizkit3d plugin 
+//    vizkit3d::MLSMapVisualization *mls_viz = new vizkit3d::MLSMapVisualization();
 //    mls_viz->updateData(*mls);
 //
 //    //create vizkit3d widget
@@ -95,7 +95,7 @@ bool PointCloudAggregator::startHook()
 //    // grid plugin
 //    vizkit3d::GridVisualization *grid_viz = new vizkit3d::GridVisualization();
 //    widget->addPlugin(grid_viz);
-//    // add envire plugin
+//    // add plugin
 //    widget->addPlugin(mls_viz);
 
     return true;

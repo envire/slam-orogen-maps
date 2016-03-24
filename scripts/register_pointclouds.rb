@@ -19,7 +19,7 @@ Bundles.initialize
 
 
 Bundles.run \
-            'envire_maps::PointCloudAggregator' => 'pc_agg',
+            'maps::PointCloudAggregator' => 'pc_agg',
             'output' => nil do
     log = Orocos::Log::Replay.open(ARGV)
     log.use_sample_time = false
