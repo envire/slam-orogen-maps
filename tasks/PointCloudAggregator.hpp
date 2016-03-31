@@ -38,7 +38,7 @@ tasks/Task.cpp, and will be put in the maps namespace.
         virtual void pointCloudCallback(const base::Time &ts, const ::base::samples::Pointcloud &pointCloud_sample);
 
         base::samples::RigidBodyState lastPose;
-        boost::scoped_ptr<::maps::MLSMap> mls;
+        boost::scoped_ptr<::maps::MLSMapSloped> mls;
         ::maps::StandaloneVisualizer viz;
 
     public:

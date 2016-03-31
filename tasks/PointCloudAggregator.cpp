@@ -72,7 +72,7 @@ bool PointCloudAggregator::configureHook()
     mls_config.updateModel = MLSConfig::SLOPE;
     mls_config.gapSize = 0.25f;
     mls_config.useNegativeInformation = !true;
-    mls.reset(new MLSMap(numCells, res, mls_config));
+    mls.reset(new MLSMapSloped(numCells, res, mls_config));
     mls->getLocalFrame().translation() << 0.5*mls->getSize()+Eigen::Vector2d(0.5,0.5), 0;
 
 
