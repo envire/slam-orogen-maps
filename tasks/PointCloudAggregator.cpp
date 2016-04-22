@@ -7,7 +7,7 @@
 //#include <vizkit3d/GridVisualization.hpp>
 
 
-using namespace maps;
+using namespace ::maps;
 
 PointCloudAggregator::PointCloudAggregator(std::string const& name)
     : PointCloudAggregatorBase(name)
@@ -40,7 +40,7 @@ void PointCloudAggregator::pointCloudCallback(const base::Time &ts, const ::base
     base::Pose body2World = lastPose.getPose();
     Eigen::Affine3d scanner2World = body2World.toTransform() * _scanner_in_body.rvalue().getPose().toTransform();
     base::samples::Pointcloud out;
-    ::maps::PointCloud pc;
+    ::maps::grid::PointCloud pc;
     pc.resize(N);
     out.points.reserve(N);
     for(size_t i=0; i<N; ++i)
@@ -63,7 +63,7 @@ bool PointCloudAggregator::configureHook()
 {
     if (! PointCloudAggregatorBase::configureHook())
         return false;
-    using namespace ::maps;
+    using namespace ::maps::grid;
     // TODO get values from config
     Eigen::Vector2d res(1, 1);
     Vector2ui numCells(50, 50);

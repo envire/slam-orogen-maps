@@ -8,8 +8,8 @@
 #include <maps/grid/MLSMap.hpp>
 #include <vizkit3d/StandaloneVisualizer.hpp>
 
-
-namespace maps {
+namespace maps
+{
 
     /*! \class PointCloudAggregator 
      * \brief The task context provides and requires services. It uses an ExecutionEngine to perform its functions.
@@ -23,7 +23,7 @@ tasks/Task.cpp, and will be put in the maps namespace.
      * The name of a TaskContext is primarily defined via:
      \verbatim
      deployment 'deployment_name'
-         task('custom_task_name','maps::PointCloudAggregator')
+         task('custom_task_name','maps::grid::PointCloudAggregator')
      end
      \endverbatim
      *  It can be dynamically adapted when the deployment is called with a prefix argument. 
@@ -38,15 +38,15 @@ tasks/Task.cpp, and will be put in the maps namespace.
         virtual void pointCloudCallback(const base::Time &ts, const ::base::samples::Pointcloud &pointCloud_sample);
 
         base::samples::RigidBodyState lastPose;
-        boost::scoped_ptr<::maps::MLSMapSloped> mls;
-        ::maps::StandaloneVisualizer viz;
+        boost::scoped_ptr<::maps::grid::MLSMapSloped> mls;
+        ::maps::grid::StandaloneVisualizer viz;
 
     public:
         /** TaskContext constructor for PointCloudAggregator
          * \param name Name of the task. This name needs to be unique to make it identifiable via nameservices.
          * \param initial_state The initial TaskState of the TaskContext. Default is Stopped state.
          */
-        PointCloudAggregator(std::string const& name = "maps::PointCloudAggregator");
+        PointCloudAggregator(std::string const& name = "maps::grid::PointCloudAggregator");
 
         /** TaskContext constructor for PointCloudAggregator 
          * \param name Name of the task. This name needs to be unique to make it identifiable for nameservices. 
