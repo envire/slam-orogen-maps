@@ -15,4 +15,5 @@
   <depend package="slam/pcl" />
   <depend package="drivers/orogen/aggregator" />
   
+   <tags>needs_opt</tags>
 </package>
