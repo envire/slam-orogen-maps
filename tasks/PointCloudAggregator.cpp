@@ -65,8 +65,8 @@ bool PointCloudAggregator::configureHook()
         return false;
     using namespace ::maps::grid;
     // TODO get values from config
-    Eigen::Vector2d res(1, 1);
-    Vector2ui numCells(50, 50);
+    Eigen::Vector2d res(0.1, 0.1);
+    Vector2ui numCells(500, 500);
 
     MLSConfig mls_config;
     mls_config.updateModel = MLSConfig::SLOPE;
@@ -122,6 +122,11 @@ void PointCloudAggregator::errorHook()
 }
 void PointCloudAggregator::stopHook()
 {
+    std::cout << "stopHook, do serialization\n";
+    std::ofstream stream("output_mls.bin", std::ios::binary);
+    boost::archive::polymorphic_binary_oarchive oa(stream);
+    oa << *mls;
+
     PointCloudAggregatorBase::stopHook();
 }
 void PointCloudAggregator::cleanupHook()
