@@ -1,6 +1,8 @@
 /* Generated from orogen/lib/orogen/templates/tasks/Task.cpp */
 
 #include "PointCloudAggregator.hpp"
+#include <fstream>
+
 
 //#include <vizkit3d/Vizkit3DWidget.hpp>
 //#include "MLSMapVisualization.hpp"
