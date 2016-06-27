@@ -18,6 +18,7 @@ using_library 'pcl_registration-1.7'
 # If this project uses data types that are defined in other oroGen projects,
 # these projects should be imported there as well.
 import_types_from "base"
+import_types_from "envire_maps"
 #import_types_from "pcl"
 
 # Declare a new task context (i.e., a component)

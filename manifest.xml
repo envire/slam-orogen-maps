@@ -14,6 +14,7 @@
   <depend package="qt4-opengl" />
   <depend package="slam/pcl" />
   <depend package="drivers/orogen/aggregator" />
+  <depend package="envire/orogen/envire_maps" />
   
    <tags>needs_opt</tags>
 </package>
