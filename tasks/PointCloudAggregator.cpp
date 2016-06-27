@@ -2,7 +2,7 @@
 
 #include "PointCloudAggregator.hpp"
 #include <fstream>
-
+#include <boost/archive/polymorphic_binary_oarchive.hpp>
 
 //#include <vizkit3d/Vizkit3DWidget.hpp>
 //#include "MLSMapVisualization.hpp"
