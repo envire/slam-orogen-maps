@@ -13,7 +13,7 @@ name "maps"
 using_library "maps"
 # import_types_from "maps/CustomType.hpp"
 
-using_library 'pcl_registration-1.7'
+using_library 'pcl_registration-1.8'
 
 # If this project uses data types that are defined in other oroGen projects,
 # these projects should be imported there as well.
