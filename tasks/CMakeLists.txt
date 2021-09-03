@@ -1,5 +1,7 @@
 # Generated from orogen/lib/orogen/templates/tasks/CMakeLists.txt
 
+rock_find_pkgconfig(vizkit3d REQUIRED)
+
 include(mapsTaskLib)
 ADD_LIBRARY(${MAPS_TASKLIB_NAME} SHARED 
     ${MAPS_TASKLIB_SOURCES})
@@ -9,7 +11,7 @@ add_dependencies(${MAPS_TASKLIB_NAME}
 TARGET_LINK_LIBRARIES(${MAPS_TASKLIB_NAME}
     ${OrocosRTT_LIBRARIES}
     ${MAPS_TASKLIB_DEPENDENT_LIBRARIES}
-    maps-viz vizkit3d
+    maps-viz ${VIZKIT3D_LIBRARIES}
     )
 SET_TARGET_PROPERTIES(${MAPS_TASKLIB_NAME}
     PROPERTIES LINK_INTERFACE_LIBRARIES "${MAPS_TASKLIB_INTERFACE_LIBRARIES}")
